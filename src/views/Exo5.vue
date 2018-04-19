@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import oeuf from "./Oeuf.vue";
+import oeuf from "../components/Oeuf.vue";
 export default {
   name: "exo5",
   components: {

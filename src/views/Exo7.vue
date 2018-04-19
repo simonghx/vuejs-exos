@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import listItem from "./List-item.vue";
+import listItem from "../components/List-item.vue";
 export default {
   name: "exo7",
   props: [],

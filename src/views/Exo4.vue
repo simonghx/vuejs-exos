@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import divtomove from "./Divtomove.vue";
+import divtomove from "../components/Divtomove";
 export default {
   name: "exo4",
   components: {
