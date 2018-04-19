@@ -1,5 +1,5 @@
 <template>
-  <img class="eggImg" src="../assets/egg.png" alt="">
+  <img class="eggImg" src="../assets/img/egg.png" alt="">
 </template>
 
 <script>
