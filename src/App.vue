@@ -10,7 +10,7 @@
     </header>
 
     <section id="panel-container" class="container">
-      
+    
       <router-view/>
       
       

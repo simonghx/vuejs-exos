@@ -4,33 +4,33 @@
     <p>Cliquer sur le bouton ci-dessous pour générer des oeufs.</p>
     <button class="btn btn-success" @click="addEgg">Ajouter un oeuf</button>
     <div class="panier">
-      <oeuf v-for="(oeuf,index) in oeufs" :key="index"></oeuf>
+      <img class="eggImg" src="../assets/img/egg.png" v-for="(element,index) in oeufs" :key="index"/>
       
     </div>
   </section>
 </template>
 
 <script>
-import oeuf from "../components/Oeuf.vue";
 export default {
   name: "exo5",
-  components: {
-    oeuf
-  },
+  components: {},
   mounted() {},
   data() {
     return {
-      oeufs: []
+      oeufs: [],
+      counter: 0
     };
   },
   methods: {
     addEgg() {
-      this.oeufs.push({ oeuf });
+      this.oeufs.push(this.counter);
+      this.counter++;
     }
   }
 };
 </script>
 
 <style lang="sass">
-
+.eggImg
+  width: 40px
 </style>
