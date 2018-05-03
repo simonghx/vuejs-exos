@@ -9,10 +9,10 @@
       </ul>
     </header>
 
-    <section id="panel-container" class="container">
+    <section id="panel-container" class="w-100 container">
     
       <transition :enter-active-class="animEnter" :leave-active-class="animLeave" mode="out-in">
-        <router-view/>
+        <router-view class=""/>
       </transition>
       
     </section>
@@ -29,8 +29,8 @@ export default {
     return {
       titre: "DOM Javascript - VueJS",
       titleChanged: false,
-      animEnter: "animated fadeIn",
-      animLeave: "animated fadeOut",
+      animEnter: "animated slideInLeft",
+      animLeave: "animated slideOutRight",
       boutons: [
         {
           name: "Exo 1",
@@ -92,7 +92,18 @@ export default {
 
 // .position-absolute
 //   position: absolute
+#panel-container
+  overflow-x: hidden
 
+@keyframes slideOutRight 
+        0% 
+            transform: translate3d(0, 0, 0)
+            visibility: visible
+        
+        100% 
+            transform: translate3d(105%, 0, 0)
+        
+  
 
 
 </style>
