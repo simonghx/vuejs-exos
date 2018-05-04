@@ -3,8 +3,7 @@
     <header class="text-center container">
       <h1 class="my-5">{{ titre }}</h1>
       <ul class="row text-center mx-auto list-unstyled">
-        <li class="col" @mouseover="changeTitle" @mouseout="titleBase" v-for="(bouton,index) in boutons" :key="index"><router-link class="btn btn-danger"  :to="bouton.valeur" @click="leftOrRight">{{ bouton.name }}
-        </router-link></li>
+        <li class="col" @mouseover="changeTitle" @mouseout="titleBase" v-for="(bouton,index) in boutons" :key="index"><router-link class="btn btn-danger"  :to="bouton.valeur" @click.native="leftOrRight">{{ bouton.name }}</router-link></li>
     
       </ul>
     </header>
@@ -31,6 +30,7 @@ export default {
       titleChanged: false,
       animEnter: "animated slideInLeft",
       animLeave: "animated slideOutRight",
+      calcul: null,
       boutons: [
         {
           name: "Exo 1",
@@ -73,14 +73,22 @@ export default {
   methods: {
     changeTitle() {
       this.titre = event.target.textContent;
+      this.calcul = this.$route.path.slice(-1) - this.titre.slice(-1);
       this.titleChanged = true;
     },
     titleBase() {
       this.titre = "DOM Javascript - VueJS";
       this.titleChanged = false;
     },
-    leftOrRight() {
-      if (event.target.num > bouton.num) {
+    leftOrRight(event) {
+      if (this.calcul > 0) {
+        this.animEnter = "animated slideInLeft";
+        this.animLeave = "animated slideOutRight";
+        return;
+      } else {
+        this.animEnter = "animated slideInRight";
+        this.animLeave = "animated slideOutLeft";
+        return;
       }
     }
   }
@@ -103,7 +111,13 @@ export default {
         100% 
             transform: translate3d(105%, 0, 0)
         
-  
+@keyframes slideOutLeft 
+        0% 
+            transform: translate3d(0, 0, 0)
+            visibility: visible
+        
+        100% 
+            transform: translate3d(-100%, 0, 0)
 
 
 </style>
